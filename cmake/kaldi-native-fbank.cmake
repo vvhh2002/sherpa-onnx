@@ -39,7 +39,8 @@ function(download_kaldi_native_fbank)
   FetchContent_GetProperties(kaldi_native_fbank)
   if(NOT kaldi_native_fbank_POPULATED)
     message(STATUS "Downloading kaldi-native-fbank from ${kaldi_native_fbank_URL}")
-    FetchContent_Populate(kaldi_native_fbank)
+ # FetchContent_Populate(kaldi_native_fbank)
+    FetchContent_MakeAvailable(kaldi_native_fbank)
   endif()
   message(STATUS "kaldi-native-fbank is downloaded to ${kaldi_native_fbank_SOURCE_DIR}")
   message(STATUS "kaldi-native-fbank's binary dir is ${kaldi_native_fbank_BINARY_DIR}")
@@ -49,7 +50,7 @@ function(download_kaldi_native_fbank)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${kaldi_native_fbank_SOURCE_DIR} ${kaldi_native_fbank_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${kaldi_native_fbank_SOURCE_DIR} ${kaldi_native_fbank_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   if(_build_shared_libs_bak)
     set_target_properties(kaldi-native-fbank-core

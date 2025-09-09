@@ -36,7 +36,8 @@ function(download_kaldifst)
   FetchContent_GetProperties(kaldifst)
   if(NOT kaldifst_POPULATED)
     message(STATUS "Downloading kaldifst from ${kaldifst_URL}")
-    FetchContent_Populate(kaldifst)
+  #  FetchContent_Populate(kaldifst)
+    FetchContent_MakeAvailable(kaldifst)
   endif()
   message(STATUS "kaldifst is downloaded to ${kaldifst_SOURCE_DIR}")
   message(STATUS "kaldifst's binary dir is ${kaldifst_BINARY_DIR}")
@@ -48,7 +49,7 @@ function(download_kaldifst)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${kaldifst_SOURCE_DIR} ${kaldifst_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${kaldifst_SOURCE_DIR} ${kaldifst_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   if(_build_shared_libs_bak)
     set_target_properties(kaldifst_core

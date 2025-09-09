@@ -48,7 +48,8 @@ function(download_espeak_ng_for_piper)
   FetchContent_GetProperties(espeak_ng)
   if(NOT espeak_ng_POPULATED)
     message(STATUS "Downloading espeak-ng from ${espeak_ng_URL}")
-    FetchContent_Populate(espeak_ng)
+    # FetchContent_Populate(espeak_ng)
+    FetchContent_MakeAvailable(espeak_ng)
   endif()
   message(STATUS "espeak-ng is downloaded to ${espeak_ng_SOURCE_DIR}")
   message(STATUS "espeak-ng binary dir is ${espeak_ng_BINARY_DIR}")
@@ -58,7 +59,7 @@ function(download_espeak_ng_for_piper)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${espeak_ng_SOURCE_DIR} ${espeak_ng_BINARY_DIR})
+  # add_subdirectory(${espeak_ng_SOURCE_DIR} ${espeak_ng_BINARY_DIR})
 
   if(_build_shared_libs_bak)
     set_target_properties(espeak-ng

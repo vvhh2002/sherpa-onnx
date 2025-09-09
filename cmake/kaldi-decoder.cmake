@@ -39,7 +39,8 @@ function(download_kaldi_decoder)
   FetchContent_GetProperties(kaldi_decoder)
   if(NOT kaldi_decoder_POPULATED)
     message(STATUS "Downloading kaldi-decoder from ${kaldi_decoder_URL}")
-    FetchContent_Populate(kaldi_decoder)
+ # FetchContent_Populate(kaldi_decoder)
+    FetchContent_MakeAvailable(kaldi_decoder)
   endif()
   message(STATUS "kaldi-decoder is downloaded to ${kaldi_decoder_SOURCE_DIR}")
   message(STATUS "kaldi-decoder's binary dir is ${kaldi_decoder_BINARY_DIR}")
@@ -51,8 +52,8 @@ function(download_kaldi_decoder)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${kaldi_decoder_SOURCE_DIR} ${kaldi_decoder_BINARY_DIR} EXCLUDE_FROM_ALL)
-
+  # add_subdirectory(${kaldi_decoder_SOURCE_DIR} ${kaldi_decoder_BINARY_DIR} EXCLUDE_FROM_ALL)
+  include_directories(${kaldi_decoder_SOURCE_DIR})
   if(_build_shared_libs_bak)
     set_target_properties(
         kaldi-decoder-core

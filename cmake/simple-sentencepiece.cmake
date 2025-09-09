@@ -39,7 +39,8 @@ function(download_simple_sentencepiece)
   FetchContent_GetProperties(simple-sentencepiece)
   if(NOT simple-sentencepiece_POPULATED)
     message(STATUS "Downloading simple-sentencepiece ${simple-sentencepiece_URL}")
-    FetchContent_Populate(simple-sentencepiece)
+    # FetchContent_Populate(simple-sentencepiece)
+    FetchContent_MakeAvailable(simple-sentencepiece)
   endif()
   message(STATUS "simple-sentencepiece is downloaded to ${simple-sentencepiece_SOURCE_DIR}")
 
@@ -48,7 +49,7 @@ function(download_simple_sentencepiece)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${simple-sentencepiece_SOURCE_DIR} ${simple-sentencepiece_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${simple-sentencepiece_SOURCE_DIR} ${simple-sentencepiece_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   if(_build_shared_libs_bak)
     set_target_properties(ssentencepiece_core

@@ -64,7 +64,8 @@ function(download_openfst)
   FetchContent_GetProperties(openfst)
   if(NOT openfst_POPULATED)
     message(STATUS "Downloading openfst from ${openfst_URL}")
-    FetchContent_Populate(openfst)
+    # FetchContent_Populate(openfst)
+    FetchContent_MakeAvailable(openfst)
   endif()
   message(STATUS "openfst is downloaded to ${openfst_SOURCE_DIR}")
 
@@ -73,7 +74,7 @@ function(download_openfst)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${openfst_SOURCE_DIR} ${openfst_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${openfst_SOURCE_DIR} ${openfst_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   if(_build_shared_libs_bak)
     set_target_properties(fst fstfar

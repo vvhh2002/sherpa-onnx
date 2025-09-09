@@ -39,7 +39,8 @@ function(download_cppinyin)
   FetchContent_GetProperties(cppinyin)
   if(NOT cppinyin_POPULATED)
     message(STATUS "Downloading cppinyin ${cppinyin_URL}")
-    FetchContent_Populate(cppinyin)
+    # FetchContent_Populate(cppinyin)
+    FetchContent_MakeAvailable(cppinyin)
 
     file(REMOVE ${cppinyin_SOURCE_DIR}/CMakeLists.txt)
     configure_file(
@@ -56,7 +57,7 @@ function(download_cppinyin)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${cppinyin_SOURCE_DIR} ${cppinyin_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${cppinyin_SOURCE_DIR} ${cppinyin_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   if(_build_shared_libs_bak)
     set_target_properties(cppinyin_core

@@ -35,7 +35,8 @@ function(download_piper_phonemize)
   FetchContent_GetProperties(piper_phonemize)
   if(NOT piper_phonemize_POPULATED)
     message(STATUS "Downloading piper-phonemize from ${piper_phonemize_URL}")
-    FetchContent_Populate(piper_phonemize)
+    # FetchContent_Populate(piper_phonemize)
+    FetchContent_MakeAvailable(piper_phonemize)
   endif()
   message(STATUS "piper-phonemize is downloaded to ${piper_phonemize_SOURCE_DIR}")
   message(STATUS "piper-phonemize binary dir is ${piper_phonemize_BINARY_DIR}")
@@ -45,7 +46,7 @@ function(download_piper_phonemize)
     set(BUILD_SHARED_LIBS OFF)
   endif()
 
-  add_subdirectory(${piper_phonemize_SOURCE_DIR} ${piper_phonemize_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${piper_phonemize_SOURCE_DIR} ${piper_phonemize_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   if(_build_shared_libs_bak)
     set_target_properties(piper_phonemize

@@ -36,10 +36,11 @@ function(download_cargs)
   FetchContent_GetProperties(cargs)
   if(NOT cargs_POPULATED)
     message(STATUS "Downloading cargs ${cargs_URL}")
-    FetchContent_Populate(cargs)
+    # FetchContent_Populate(cargs)
+    FetchContent_MakeAvailable(cargs)
   endif()
   message(STATUS "cargs is downloaded to ${cargs_SOURCE_DIR}")
-  add_subdirectory(${cargs_SOURCE_DIR} ${cargs_BINARY_DIR} EXCLUDE_FROM_ALL)
+  # add_subdirectory(${cargs_SOURCE_DIR} ${cargs_BINARY_DIR} EXCLUDE_FROM_ALL)
 
   install(TARGETS cargs DESTINATION lib)
   install(FILES ${cargs_SOURCE_DIR}/include/cargs.h

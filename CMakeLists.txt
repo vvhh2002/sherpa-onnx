@@ -477,6 +477,6 @@ install(
   FILES
     ${PROJECT_BINARY_DIR}/sherpa-onnx.pc
   DESTINATION
-    ./
+    ${CMAKE_INSTALL_PREFIX}/
 )
 message(STATUS "CMAKE_CXX_FLAGS: ${CMAKE_CXX_FLAGS}")
